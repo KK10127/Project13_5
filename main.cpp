@@ -10,7 +10,20 @@
  *      all lines that containt the string. After all occurrences have been located, the program
  *      should report the number of times the string appeared in the file.
  *
+ *  ALGORITHM:
+ *  1. Define variables for the line, fileName, target string, target occurrences.
+ *  2. Prompt user for the filename
+ *  3. Open the infilestream
+ *  4. Check that the filestream was opened correctly.
+ *  5. While !file.eof()
+ *      a. call line.find()
+ *      b. see if the found value == string::npos
+ *          IF it is, set startHere to 0 and break.
+ *          ELSE increment the targetOccurenses and set the "startHere" to the
+ *              found index + 1.
  *
+ *  6. Output the occurenses
+ *  7. Close the fileStream
  *
  */
 #include <iostream>
@@ -19,6 +32,7 @@ using namespace std;
 
 int main() {
 
+    // variables
     string line, fileName, target;
     int targetOccurences = 0;
     size_t found, startHere;
@@ -26,7 +40,7 @@ int main() {
 
     startHere = 0;
 
-
+    // greeting and get filename
     cout << "Welcome to the demo of project 5!" << endl;
     cout << "Enter a file name: ";
     cin >> fileName;
@@ -42,6 +56,7 @@ int main() {
         cout << "Could not open file!\n";
         return 0;
     }
+
 
     while(!file.eof()) {
         // get the next line
@@ -64,6 +79,7 @@ int main() {
         }
     }
 
+    // occurrences output
     cout << "\n\n\'" << target << "\' was found " << targetOccurences << " times!" << endl;
 
 
